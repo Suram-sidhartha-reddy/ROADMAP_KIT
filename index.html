@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Engineer — Complete Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #16161f;
+    --border: rgba(255,255,255,0.07);
+    --accent: #7fffb2;
+    --accent2: #5b8fff;
+    --accent3: #ff7f7f;
+    --accent4: #ffcf7f;
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --tag-bg: rgba(127,255,178,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(127,255,178,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127,255,178,0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 80px;
+    border-left: 3px solid var(--accent);
+    padding-left: 28px;
+  }
+
+  .header .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+
+  .header h1 span {
+    color: var(--accent);
+  }
+
+  .header .subtitle {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  .header .meta-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* HOW TO USE */
+  .how-to-use {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    padding: 28px 32px;
+    margin-bottom: 72px;
+    position: relative;
+  }
+
+  .how-to-use .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .how-to-use p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .how-to-use strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* PART DIVIDER */
+  .part-divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 80px 0 48px;
+  }
+
+  .part-divider .part-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .part-divider .part-label span {
+    color: var(--accent);
+  }
+
+  .part-divider .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* PHASE BLOCKS */
+  .phase {
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .phase-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--tag-bg);
+    border: 1px solid rgba(127,255,178,0.2);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .phase-title-group h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .phase-title-group .weeks {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  .phase-body {
+    padding-left: 0;
+  }
+
+  /* SECTION within a phase */
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent4);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,207,127,0.1);
+    max-width: 200px;
+  }
+
+  .concept-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .concept-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: #c0c0d0;
+    line-height: 1.6;
+  }
+
+  .concept-list li::before {
+    content: '—';
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .concept-list li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .concept-list li .insider {
+    display: inline-block;
+    background: rgba(255,127,127,0.1);
+    border: 1px solid rgba(255,127,127,0.2);
+    color: var(--accent3);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    margin-left: 6px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* CALLOUT BOXES */
+  .callout {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .callout::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+  }
+
+  .callout.red::before { background: var(--accent3); }
+  .callout.green::before { background: var(--accent); }
+  .callout.blue::before { background: var(--accent2); }
+  .callout.yellow::before { background: var(--accent4); }
+
+  .callout .callout-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .callout.red .callout-label { color: var(--accent3); }
+  .callout.green .callout-label { color: var(--accent); }
+  .callout.blue .callout-label { color: var(--accent2); }
+  .callout.yellow .callout-label { color: var(--accent4); }
+
+  .callout p, .callout li {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .callout strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .callout ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 0;
+  }
+
+  .callout ul li::before {
+    content: '→ ';
+    color: inherit;
+    opacity: 0.5;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: #b0b0c0;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  tr:hover td {
+    background: rgba(255,255,255,0.02);
+  }
+
+  /* PROBLEM LIST */
+  .problem-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+  }
+
+  .problem-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 12px;
+    background: rgba(91,143,255,0.08);
+    border: 1px solid rgba(91,143,255,0.2);
+    color: var(--accent2);
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  /* WEEK SCHEDULE TABLE */
+  .schedule-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+    margin: 48px 0;
+  }
+
+  .schedule-section h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .schedule-section .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* RESOURCES */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .resource-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px;
+    position: relative;
+  }
+
+  .resource-card .r-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .resource-card .r-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .resource-card .r-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .resource-card .insider-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    background: rgba(255,127,127,0.1);
+    border: 1px solid rgba(255,127,127,0.25);
+    color: var(--accent3);
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 96px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer .f-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .footer .f-label span {
+    color: var(--accent);
+  }
+
+  /* Separator line */
+  .phase-sep {
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 40px 20px; }
+    .how-to-use { padding: 20px; }
+    .phase-header { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">// Complete Technical Roadmap</div>
+    <h1>ML <span>Engineer</span><br>Field Manual</h1>
+    <p class="subtitle">
+      What they don't put in blog posts. Includes production realities, 
+      hiring filters, debugging instincts, and the non-obvious things 
+      that separate L4 practitioners from L6 ones.
+    </p>
+    <div class="meta-row">
+      <div class="meta-pill">Duration: 8–12 months</div>
+      <div class="meta-pill">Phases: 8</div>
+      <div class="meta-pill">Covers: Core ML → MLOps → Research Engineering</div>
+    </div>
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="how-to-use">
+    <div class="label">// How to Use This</div>
+    <p>
+      This roadmap is structured into <strong>two parts</strong>: 
+      <strong>Part 1 — ML Engineering Core</strong> (Months 1–5) builds the practitioner foundation, 
+      and <strong>Part 2 — Production ML & Specializations</strong> (Months 5–10) builds the systems 
+      and niche depth that actually gets you hired. <br><br>
+      Items marked <span style="background:rgba(255,127,127,0.1);border:1px solid rgba(255,127,127,0.2);color:#ff7f7f;font-family:'DM Mono',monospace;font-size:10px;padding:1px 6px;border-radius:2px;letter-spacing:0.1em;">INSIDER</span> are 
+      things most courses skip but working professionals consider table stakes. 
+      These are the things that get flagged in code reviews, 
+      blow up at 3am in production, and come up in staff-level system design rounds.
+    </p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PART 1 -->
+  <!-- ============================================================ -->
+  <div class="part-divider">
+    <div class="part-label">PART 01 <span>/ ML Engineering Core</span></div>
+    <div class="line"></div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 01</div>
+      <div class="phase-title-group">
+        <h2>Mathematical Foundations That Actually Matter</h2>
+        <div class="weeks">Weeks 1–4 · Don't skip this</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">Linear Algebra</div>
+        <ul class="concept-list">
+          <li>Vectors, matrices, matrix multiplication — not just operations but <strong>geometric intuition</strong></li>
+          <li>Eigendecomposition and SVD — <strong>understand what singular values represent</strong> (energy, signal strength)</li>
+          <li>PCA from scratch — why you'd use it and when it lies to you <span class="insider">Insider</span></li>
+          <li>Matrix rank and null space — how they relate to underdetermined systems in regression</li>
+          <li><strong>Numerically stable implementations</strong> — why naive dot products lose precision at scale <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Probability & Statistics</div>
+        <ul class="concept-list">
+          <li>MLE vs MAP — and when MAP silently becomes L2 regularization <span class="insider">Insider</span></li>
+          <li>Bayes' theorem applied to model calibration, not just toy examples</li>
+          <li><strong>Calibration vs accuracy</strong> — a model can be 95% accurate and completely uncalibrated <span class="insider">Insider</span></li>
+          <li>KL Divergence — the actual math behind VAEs, knowledge distillation, and RLHF reward modeling</li>
+          <li>Central Limit Theorem applied to <strong>A/B testing validity</strong> — most ML A/B tests are run wrong <span class="insider">Insider</span></li>
+          <li>Expected value framing for business metrics — how to translate model outputs to dollar values</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Calculus for ML</div>
+        <ul class="concept-list">
+          <li>Chain rule — not the textbook version, the <strong>computational graph version</strong></li>
+          <li>Jacobians and Hessians — when they matter (second-order optimizers, curvature estimation)</li>
+          <li>Numerical gradient checking — how to verify your backprop is correct <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="callout yellow">
+        <div class="callout-label">⚠ Professional Reality</div>
+        <p>Most ML bugs in production aren't model architecture bugs — they're <strong>numerical stability bugs, shape broadcasting errors, or gradient explosion/vanishing</strong> that manifests slowly over training. The math here is what lets you read the symptom and find the cause.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="phase-sep"></div>
+
+  <!-- PHASE 2 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 02</div>
+      <div class="phase-title-group">
+        <h2>Classical ML — Deeper Than You Think</h2>
+        <div class="weeks">Weeks 4–8</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">Core Algorithms (Implement, Don't Just Call)</div>
+        <ul class="concept-list">
+          <li>Linear/Logistic Regression — implement with gradient descent <strong>and</strong> normal equations; understand when each fails</li>
+          <li>Decision Trees — implement ID3/CART from scratch; understand split criteria geometrically</li>
+          <li>Random Forests — understand out-of-bag error; why it's a free validation set <span class="insider">Insider</span></li>
+          <li>Gradient Boosting — understand the additive model view, not just "XGBoost is fast"</li>
+          <li>SVM — understand the kernel trick geometrically; when to use over neural nets</li>
+          <li>K-Means — convergence guarantees (or lack thereof); K-Means++ initialization matters <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">What Industry Adds That Courses Skip</div>
+        <ul class="concept-list">
+          <li><strong>Feature importance ≠ causation</strong> — SHAP values and their limitations in correlated features <span class="insider">Insider</span></li>
+          <li>Class imbalance: SMOTE is often worse than you think; try class weights first <span class="insider">Insider</span></li>
+          <li><strong>Data leakage patterns</strong> — future data in features, target-encoded in wrong order, ID columns correlated with label <span class="insider">Insider</span></li>
+          <li>Cross-validation strategies: time-series CV, group K-fold, stratified — wrong choice = misleading metrics <span class="insider">Insider</span></li>
+          <li>Calibration curves: Platt scaling and Isotonic regression for probability calibration</li>
+          <li><strong>When to not use ML</strong> — a decision tree on rules sometimes beats a neural net and is debuggable <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Must-Build Projects</div>
+        <div class="problem-grid">
+          <span class="problem-tag">Tabular churn prediction (full pipeline)</span>
+          <span class="problem-tag">Fraud detection with severe imbalance</span>
+          <span class="problem-tag">Time-series forecasting (retail)</span>
+          <span class="problem-tag">Feature store prototype</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="phase-sep"></div>
+
+  <!-- PHASE 3 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 03</div>
+      <div class="phase-title-group">
+        <h2>Deep Learning Engineering</h2>
+        <div class="weeks">Weeks 8–14</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">Training Mechanics (The Real Ones)</div>
+        <ul class="concept-list">
+          <li>Backpropagation through computational graphs — implement autograd in NumPy <span class="insider">Insider</span></li>
+          <li><strong>Optimizer internals</strong> — SGD, Momentum, AdaGrad, Adam — understand why Adam's bias correction matters at step 1 <span class="insider">Insider</span></li>
+          <li>Learning rate schedules — warmup + cosine decay is default at every serious lab <span class="insider">Insider</span></li>
+          <li>Batch size scaling laws — why doubling batch size often needs LR doubling (linear scaling rule)</li>
+          <li><strong>Gradient clipping</strong> — by value vs by norm; why norm-clipping is almost always preferred <span class="insider">Insider</span></li>
+          <li>Mixed precision (FP16/BF16) — numerical edge cases; BF16 over FP16 for LLMs specifically <span class="insider">Insider</span></li>
+          <li>Gradient accumulation — how to simulate large batches on small GPUs</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Architecture Patterns</div>
+        <ul class="concept-list">
+          <li>CNNs — receptive field calculations; depthwise separable convolutions (efficiency trick)</li>
+          <li>Residual connections — why they work (gradient highway), not just that they work</li>
+          <li>Attention mechanism — implement multi-head attention from scratch before using nn.MultiheadAttention</li>
+          <li><strong>Transformers internals</strong> — positional encoding variants (sinusoidal, RoPE, ALiBi); why they differ at long context <span class="insider">Insider</span></li>
+          <li>LayerNorm vs BatchNorm — when each fails (BN fails on small batches; LN fails on early training sometimes)</li>
+          <li><strong>Weight initialization</strong> — Kaiming vs Xavier; wrong init = dead network from step 1 <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Debugging Neural Networks (Nobody Teaches This)</div>
+        <ul class="concept-list">
+          <li><strong>Loss not decreasing?</strong> Overfit one batch first — if it can't memorize 1 sample, architecture is broken <span class="insider">Insider</span></li>
+          <li>Check gradient norms per layer — exploding/vanishing is layer-specific, not global</li>
+          <li>Visualize activations and weights — dead neurons (all-zero activations) are invisible without this</li>
+          <li><strong>Label smoothing's hidden effect</strong> — improves calibration but hurts accuracy on noisy labels <span class="insider">Insider</span></li>
+          <li>Loss landscape flatness — sharp minima generalize worse; SAM optimizer exists for this reason</li>
+          <li>NaN hunting — enable gradient anomaly detection in PyTorch during debug only <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="callout red">
+        <div class="callout-label">🔥 Professional Reality</div>
+        <ul>
+          <li>Training runs that look fine for 5k steps can diverge at 20k. <strong>Always log gradient norms.</strong></li>
+          <li>Evaluation loss ≠ task metric. You need both. Most teams learn this after their first production incident.</li>
+          <li>Reproducibility requires: fixed seeds, deterministic CUDA ops, and pinned library versions — in that order.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="phase-sep"></div>
+
+  <!-- PHASE 4 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 04</div>
+      <div class="phase-title-group">
+        <h2>NLP & LLM Engineering</h2>
+        <div class="weeks">Weeks 12–18 · High-value niche</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">Tokenization & Embeddings</div>
+        <ul class="concept-list">
+          <li>BPE, WordPiece, SentencePiece — how vocabulary size affects out-of-vocabulary behavior <span class="insider">Insider</span></li>
+          <li><strong>Tokenizer-model mismatch</strong> — fine-tuning with a different tokenizer than pretraining = silent degradation <span class="insider">Insider</span></li>
+          <li>Embedding space geometry — anisotropy problem in sentence transformers and how whitening fixes it</li>
+          <li>Context window vs effective context — attention sinks, lost-in-the-middle effect <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Fine-Tuning & PEFT</div>
+        <ul class="concept-list">
+          <li>Full fine-tuning — when it's still the right call (small datasets, <span style="color:var(--text)">task is very far from pretraining</span>)</li>
+          <li><strong>LoRA internals</strong> — rank selection heuristics; low rank ≠ always good <span class="insider">Insider</span></li>
+          <li>QLoRA — 4-bit quantization + LoRA; VRAM math to fit models on consumer GPUs</li>
+          <li>Catastrophic forgetting — why instruction-tuned models forget general abilities; replay buffers <span class="insider">Insider</span></li>
+          <li>DPO vs PPO for RLHF — DPO is simpler but brittler on distribution shift <span class="insider">Insider</span></li>
+          <li><strong>Prompt sensitivity</strong> — same model, different prompt order = 10–20% accuracy swing on benchmarks <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">RAG Systems (Real Implementation)</div>
+        <ul class="concept-list">
+          <li>Chunking strategies — recursive character splitting vs semantic chunking; chunk overlap tradeoffs</li>
+          <li><strong>Embedding model choice</strong> — domain-specific embeddings often beat general ones; MTEB leaderboard is your starting point</li>
+          <li>Retrieval failure modes — query-document mismatch, late chunking, top-k not enough <span class="insider">Insider</span></li>
+          <li>Hybrid search — BM25 + dense retrieval + RRF reranking; dense alone loses on keyword queries <span class="insider">Insider</span></li>
+          <li>Reranker models (cross-encoders) — when to add; latency vs quality tradeoff</li>
+          <li><strong>Hallucination isn't random</strong> — it correlates with retrieval confidence; log retrieval scores <span class="insider">Insider</span></li>
+          <li>RAG evaluation metrics — RAGAS, faithfulness vs answer relevancy vs context recall</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">LLM Inference Engineering</div>
+        <ul class="concept-list">
+          <li>KV cache — what it stores, why it grows with context length, how PagedAttention solves it</li>
+          <li><strong>Quantization</strong> — GPTQ, AWQ, GGUF formats; perplexity vs downstream task accuracy gap <span class="insider">Insider</span></li>
+          <li>Speculative decoding — draft model + verifier; 2–3x speedup with no accuracy loss</li>
+          <li>Batching strategies — static vs dynamic vs continuous batching; throughput vs latency tradeoff <span class="insider">Insider</span></li>
+          <li><strong>vLLM vs TGI vs Ollama</strong> — know when each is appropriate at scale <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PART 2 -->
+  <!-- ============================================================ -->
+  <div class="part-divider">
+    <div class="part-label">PART 02 <span>/ Production ML & Systems</span></div>
+    <div class="line"></div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 05</div>
+      <div class="phase-title-group">
+        <h2>MLOps & Production Systems</h2>
+        <div class="weeks">Weeks 16–22 · The career differentiator</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">The ML Lifecycle Nobody Draws Accurately</div>
+        <ul class="concept-list">
+          <li>Data versioning — DVC, LakeFS; why Git for code and Git for data are different problems <span class="insider">Insider</span></li>
+          <li><strong>Training pipelines</strong> — reproducibility means same data, same code, same config — not just "same seed" <span class="insider">Insider</span></li>
+          <li>Experiment tracking — MLflow / W&B; logging hyperparams, system metrics, artifacts together <span class="insider">Insider</span></li>
+          <li>Model registry — staging → production → archived; rollback isn't just redeploying old code <span class="insider">Insider</span></li>
+          <li><strong>Feature stores</strong> — Feast, Tecton; training-serving skew is the #1 silent production killer <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Serving & Deployment</div>
+        <ul class="concept-list">
+          <li>REST vs gRPC for model serving — gRPC for low latency inter-service; REST for external APIs</li>
+          <li>ONNX export — export from PyTorch, run anywhere; shape inference pitfalls <span class="insider">Insider</span></li>
+          <li><strong>Model warming</strong> — cold start latency is real; first request spike causes SLA breach in prod <span class="insider">Insider</span></li>
+          <li>Canary deployments for models — shadow mode → 5% → 25% → 100%; traffic splitting logic</li>
+          <li>Triton Inference Server — batching, multiple backends, GPU concurrency controls <span class="insider">Insider</span></li>
+          <li><strong>Async inference</strong> — queue-based for heavy models; polling vs webhooks for results</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Monitoring (The Part That's Always Broken)</div>
+        <ul class="concept-list">
+          <li><strong>Data drift vs concept drift</strong> — P(X) shifts vs P(Y|X) shifts; different detection methods for each <span class="insider">Insider</span></li>
+          <li>PSI (Population Stability Index) — industry-standard drift metric; know the 0.1 / 0.2 thresholds <span class="insider">Insider</span></li>
+          <li>Upstream data contract testing — your model fails silently when a schema changes upstream <span class="insider">Insider</span></li>
+          <li>Label delay problem — ground truth arrives days/weeks after prediction; how to design evaluation around it <span class="insider">Insider</span></li>
+          <li><strong>Alerting on model metrics, not just infra metrics</strong> — latency being fine doesn't mean the model is fine <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-label">✓ The Interview Filter Most Candidates Fail</div>
+        <p>Staff ML engineers at FAANG/Series B+ startups will ask: <strong>"Your model went to prod last Tuesday. How do you know if it's working right now?"</strong> — If your answer is only "I check accuracy on the test set," you're not ready. The answer involves feature distribution monitoring, prediction distribution tracking, business metric correlation, and upstream data health checks running simultaneously.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="phase-sep"></div>
+
+  <!-- PHASE 6 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 06</div>
+      <div class="phase-title-group">
+        <h2>Distributed Training & Compute Efficiency</h2>
+        <div class="weeks">Weeks 20–26 · Required for large-model roles</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">Parallelism Strategies</div>
+        <ul class="concept-list">
+          <li><strong>Data parallelism</strong> — DDP vs FSDP; FSDP shards optimizer state (critical for 7B+ models) <span class="insider">Insider</span></li>
+          <li>Tensor parallelism — Megatron-style; split individual weight matrices across GPUs</li>
+          <li>Pipeline parallelism — GPipe/1F1B schedule; bubble overhead and how microbatches reduce it <span class="insider">Insider</span></li>
+          <li><strong>3D parallelism</strong> — combining all three; used for 70B+ training runs</li>
+          <li>ZeRO optimizer stages (0/1/2/3) — stage 3 shards everything but has communication overhead <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">GPU Performance Engineering</div>
+        <ul class="concept-list">
+          <li>Memory bandwidth vs compute bound — profiling determines which you are; different optimizations for each <span class="insider">Insider</span></li>
+          <li>CUDA kernel basics — memory coalescing, warp divergence; you don't need to write CUDA but must read profiles</li>
+          <li><strong>FlashAttention</strong> — IO-aware attention; why it's 3–5x faster without approximation <span class="insider">Insider</span></li>
+          <li>torch.compile and TorchInductor — graph capture gotchas with dynamic shapes <span class="insider">Insider</span></li>
+          <li>Gradient checkpointing — recompute activations to save memory at cost of 30% more compute <span class="insider">Insider</span></li>
+          <li><strong>Profiling tools</strong> — PyTorch Profiler, NVIDIA Nsight; trace files tell you where time actually goes <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="phase-sep"></div>
+
+  <!-- PHASE 7 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 07</div>
+      <div class="phase-title-group">
+        <h2>ML System Design</h2>
+        <div class="weeks">Weeks 22–28 · The interview round that filters seniors</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">ML System Design Framework</div>
+        <ul class="concept-list">
+          <li>1. <strong>Clarify the ML task</strong> — classification/regression/ranking/generation; online vs batch inference</li>
+          <li>2. <strong>Define the objective</strong> — business metric → proxy metric → model metric; misalignment here = wrong model <span class="insider">Insider</span></li>
+          <li>3. <strong>Data strategy</strong> — sources, labeling cost, weak supervision, data flywheel</li>
+          <li>4. <strong>Feature engineering</strong> — real-time vs precomputed; feature store architecture</li>
+          <li>5. <strong>Model selection</strong> — start simple; complexity budget vs latency budget</li>
+          <li>6. <strong>Offline evaluation</strong> — metrics, bias analysis, failure mode analysis</li>
+          <li>7. <strong>Online evaluation</strong> — A/B test design, guardrail metrics</li>
+          <li>8. <strong>Deployment + monitoring</strong> — serving infra, drift alerts, rollback plan</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Common ML System Design Problems</div>
+
+        <div style="margin-bottom:24px">
+          <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent4);margin-bottom:10px;">Recommendation System (Netflix / Spotify)</div>
+          <ul class="concept-list">
+            <li>Two-tower architecture — candidate generation vs ranking stage; why separate stages</li>
+            <li><strong>Exploration vs exploitation</strong> — epsilon-greedy, UCB, contextual bandits; pure ML = filter bubble <span class="insider">Insider</span></li>
+            <li>Cold start: new user, new item — content-based fallback strategy</li>
+            <li>Implicit feedback (clicks, watch time) vs explicit (ratings) — implicit is noisier but far more abundant</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom:24px">
+          <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent4);margin-bottom:10px;">Ad Click-Through Rate Prediction</div>
+          <ul class="concept-list">
+            <li>Calibration is more important than AUC here — advertisers bid on calibrated probabilities <span class="insider">Insider</span></li>
+            <li><strong>Feature interactions</strong> — DeepFM, DCN; cross features for sparse categoricals</li>
+            <li>Real-time feature computation — last N clicks, session context; sub-10ms latency requirement</li>
+            <li>Position bias in training data — clicks are affected by position; debias with inverse propensity scoring <span class="insider">Insider</span></li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom:24px">
+          <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent4);margin-bottom:10px;">Search Ranking (Google / LinkedIn)</div>
+          <ul class="concept-list">
+            <li>Learning to Rank — pointwise, pairwise (RankNet), listwise (LambdaMART) — listwise wins but needs more data</li>
+            <li><strong>Query understanding</strong> — spell correction, entity recognition, query expansion</li>
+            <li>NDCG as metric — position-weighted; first result matters 4x more than third</li>
+            <li>Freshness vs relevance tradeoff — time decay factors in ranking scores <span class="insider">Insider</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent4);margin-bottom:10px;">Fraud Detection / Anomaly Detection</div>
+          <ul class="concept-list">
+            <li>Real-time scoring — must score in <100ms; feature computation is the bottleneck, not the model</li>
+            <li><strong>Feedback loop problem</strong> — blocking fraud means no ground truth on blocked transactions <span class="insider">Insider</span></li>
+            <li>Graph features — device/IP/account rings; GNNs for connected fraud rings</li>
+            <li>Rule engine + ML hybrid — rules for known patterns, ML for new ones; never replace rules entirely <span class="insider">Insider</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="phase-sep"></div>
+
+  <!-- PHASE 8 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number">PHASE 08</div>
+      <div class="phase-title-group">
+        <h2>The Non-Technical Skills That Gate Hiring</h2>
+        <div class="weeks">Ongoing — Start Month 1, Never Stop</div>
+      </div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">Experiment Mindset</div>
+        <ul class="concept-list">
+          <li><strong>Hypothesis-driven iteration</strong> — every experiment should have a falsifiable hypothesis before running it <span class="insider">Insider</span></li>
+          <li>Keep experiment logs — what you changed, why, what happened; reviewers will ask for your reasoning chain</li>
+          <li>Negative results are results — document why things didn't work; it saves the next engineer 2 weeks <span class="insider">Insider</span></li>
+          <li><strong>Compute budgeting</strong> — justifying GPU hours is a real conversation at senior levels</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Communication (Underrated, Career-Defining)</div>
+        <ul class="concept-list">
+          <li>Write model cards — document limitations, training data, evaluation gaps; this is now an industry expectation <span class="insider">Insider</span></li>
+          <li><strong>Metric storytelling</strong> — +1.2% AUC means nothing to a PM; convert to revenue impact or user experience delta</li>
+          <li>Disagreement with stakeholders — learn to say "this will hurt the model" without killing the relationship</li>
+          <li>Design docs — write a 1-pager before building any significant feature; senior engineers live by this <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Research Literacy</div>
+        <ul class="concept-list">
+          <li>Reading papers — abstract → intro → experiments → conclusion; skip related work first read</li>
+          <li><strong>Reproduction gap</strong> — 60–70% of paper results don't reproduce in different settings; be skeptical <span class="insider">Insider</span></li>
+          <li>arxiv Sanity / Papers With Code — find state-of-art baselines for any task before starting</li>
+          <li>Ablation studies — always run them before claiming your contribution matters <span class="insider">Insider</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCHEDULE TABLE -->
+  <div class="schedule-section">
+    <h3>📅 ML Engineer Monthly Schedule</h3>
+    <p class="sub">Phases overlap intentionally — systems thinking should run alongside implementation</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Timeframe</th>
+            <th>Primary Focus</th>
+            <th>Secondary Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Month 1</td>
+            <td>Math foundations, NumPy, scikit-learn internals</td>
+            <td>Set up experiment tracking (W&B)</td>
+          </tr>
+          <tr>
+            <td>Month 2</td>
+            <td>Classical ML, implement from scratch</td>
+            <td>Kaggle tabular competition (top 30%)</td>
+          </tr>
+          <tr>
+            <td>Month 3</td>
+            <td>PyTorch, DL training mechanics, debugging</td>
+            <td>Reproduce a paper result</td>
+          </tr>
+          <tr>
+            <td>Month 4</td>
+            <td>NLP, Transformers, fine-tuning, RAG</td>
+            <td>Build a production RAG system</td>
+          </tr>
+          <tr>
+            <td>Month 5</td>
+            <td>MLOps — pipelines, feature stores, monitoring</td>
+            <td>Deploy Month 4 project with monitoring</td>
+          </tr>
+          <tr>
+            <td>Month 6</td>
+            <td>Distributed training, GPU profiling, quantization</td>
+            <td>Fine-tune a 7B model with QLoRA</td>
+          </tr>
+          <tr>
+            <td>Month 7–8</td>
+            <td>ML System Design (2 problems/week)</td>
+            <td>Mock interviews, paper reading club</td>
+          </tr>
+          <tr>
+            <td>Month 9–10</td>
+            <td>Specialization (agents / multimodal / CV)</td>
+            <td>Open-source contribution or research preprint</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:20px;font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);">
+      Daily target: 1 concept deep-dived + 1 implementation + 1 paper section
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="part-divider">
+    <div class="part-label">RESOURCES <span>/ Curated & Honest</span></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="r-category">Foundations</div>
+      <div class="r-title">Deep Learning by Goodfellow et al.</div>
+      <div class="r-desc">Still the most rigorous treatment of fundamentals. Read Chapters 6–9 before anything else.</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">PyTorch</div>
+      <div class="r-title">Andrej Karpathy's makemore / nanoGPT</div>
+      <div class="r-desc">Build transformers from scratch. Better than any course for intuition. Non-negotiable.</div>
+      <div class="insider-badge">Insider</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">MLOps</div>
+      <div class="r-title">Chip Huyen — Designing ML Systems</div>
+      <div class="r-desc">The only book that explains the gap between research ML and production ML honestly.</div>
+      <div class="insider-badge">Insider</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">LLMs</div>
+      <div class="r-title">Hugging Face NLP Course</div>
+      <div class="r-desc">Best free resource for transformers, tokenizers, fine-tuning, and the entire HF ecosystem.</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">System Design</div>
+      <div class="r-title">Eugene Yan's Applied ML Blog</div>
+      <div class="r-desc">Real-world ML system design from someone who worked at Amazon. Industry patterns documented honestly.</div>
+      <div class="insider-badge">Insider</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">Research</div>
+      <div class="r-title">Papers With Code</div>
+      <div class="r-desc">State-of-the-art leaderboards + paper + code in one place. Your first stop before starting any project.</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">Distributed Training</div>
+      <div class="r-title">Lilian Weng's Blog (lilianweng.github.io)</div>
+      <div class="r-desc">Deepest technical writing on RL, attention, diffusion, and distributed training available publicly.</div>
+      <div class="insider-badge">Insider</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">Interview Prep</div>
+      <div class="r-title">ML System Design — Khang Pham</div>
+      <div class="r-desc">Structured ML system design problems with worked examples. Covers recommendation, search, ads.</div>
+    </div>
+    <div class="resource-card">
+      <div class="r-category">GPU Engineering</div>
+      <div class="r-title">CUDA Mode Lectures (YouTube)</div>
+      <div class="r-desc">PyTorch GPU optimization lectures from practitioners at Meta/NVIDIA. No equivalent exists publicly.</div>
+      <div class="insider-badge">Insider</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="f-label">ML Engineer Field Manual · <span>June 2026</span></div>
+    <div class="f-label">Phases: 8 · Timeline: 8–12 months</div>
+  </div>
+
+</div>
+</body>
+</html>
